@@ -1,0 +1,18 @@
+
+        <md-radio-group ng-model="$siteTheme" ng-change="vxUpdateData('site_settings/setting_name/siteTheme', {value: $siteTheme});">
+            <md-card class="md-whiteframe-z1" ng-repeat="t in siteThemes">
+                <md-card-content flex layout="row">
+                    <span flex><md-radio-button flex="90" aria-label="Тема" ng-value="t">Тема: "{{t}}"</md-radio-button></span>
+                    <span flex><md-button md-theme="{{t}}" class="md-fab md-mini md-primary"><i class="material-icons">menu</i></md-button></span>
+                    <span flex><md-button md-theme="{{t}}" class="md-fab md-mini md-success"><i class="material-icons">person_add</i></md-button></span>
+                    <span flex><md-button md-theme="{{t}}" class="md-fab md-mini md-warn"><i class="material-icons">add</i></md-button></span>
+                    <span flex><md-button md-theme="{{t}}" class="md-fab md-primary"><i class="material-icons">menu</i></md-button></span>
+                    <span flex><md-button md-theme="{{t}}" class="md-fab md-success"><i class="material-icons">person_add</i></md-button></span>
+                    <span flex><md-button md-theme="{{t}}" class="md-fab md-warn"><i class="material-icons">add</i></md-button></span>
+                    <span flex><md-button flex="100" md-theme="{{t}}" class="md-raised md-primary">{{t}} primary</md-button></span>
+                    <span flex><md-button flex="100" md-theme="{{t}}" class="md-raised md-accent">{{t}} accent</md-button></span>
+                    <span flex><md-button flex="100" md-theme="{{t}}" class="md-raised md-warn">{{t}} warn</md-button></span>
+                    <span flex><md-button flex="100" md-theme="{{t}}" class="md-primary">{{t}} flat</md-button></span>
+                </md-card-content>
+            </md-card>
+        </md-radio-group>

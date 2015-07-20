@@ -1,0 +1,44 @@
+<!DOCTYPE html lang="ru">
+<html ng-app="verax">
+<head>
+    <title></title>
+    <meta name="Description" content="">
+    <meta charset="utf-8">
+    <base href="/">
+    <link rel="stylesheet" href="css/angular-material.min.css" type="text/css" />
+    <link rel="import" href="js/polymer/core-header-panel/core-header-panel.html">
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+</head>
+<body ng-cloak>
+
+
+  <div layout-fill layout="row" ng-view="" id="ng-view"></div>
+
+
+<!-- Libraries -->
+<script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-aria.min.js"></script>
+<script src="js/angular-material.min.js"></script>
+<script src="js/toaster.js"></script>
+<script src="js/polymer/webcomponents.min.js"></script>
+<script src="js/jquery.noty.packaged.js"></script>
+
+
+  <!-- AngularJS custom codes -->
+<script src="app/app.js"></script>
+<script src="app/data.js"></script>
+<script src="app/globalController.js"></script>
+<script src="app/globalDirectives.js"></script>
+<script src="app/veraxRoutesController.js"></script>
+<script src="app/auth/authCtrl.js"></script>
+<script src="app/admin/adminMainCtrl.js"></script>
+<script src="app/on/clientMainCtrl.js"></script>
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

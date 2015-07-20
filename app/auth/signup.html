@@ -1,0 +1,67 @@
+
+<md-content ng-controller="authCtrl" style="font-size: 0.8em;">
+    <md-tabs md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
+        <md-tab label="Вход">
+            <md-content class="md-padding">
+                <form name="loginForm">
+                    <md-input-container>
+                        <label>Электронная почта</label>
+                        <input type="text" name="email" ng-model="login.email" type="email" md-sidenav-focus required/>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Пароль</label>
+                        <input type="password" name="password" ng-model="login.password" ng-maxlength="20" ng-minlength="6" required/>
+                    </md-input-container>
+
+                    <md-button type="submit" class="md-raised md-accent" ng-click="doLogin(login)" ng-disabled="loginForm.$invalid">Войти</md-button>
+
+                </form>
+            </md-content>
+        </md-tab>
+
+        <md-tab label="Регистрация">
+            <md-content class="md-padding">
+                <form name="signupForm">
+
+                    <md-input-container>
+                        <label>Электронная почта</label>
+                        <input type="text" name="email" ng-model="signup.email" type="email" required />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Пароль</label>
+                        <input type="password" name="password" ng-model="signup.password" ng-maxlength="20" ng-minlength="6" required />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Повторите пароль</label>
+                        <input type="password" name="password2" ng-model="signup.password2" ng-maxlength="20" ng-minlength="6" password-match="signup.password" required />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>ФИО</label>
+                        <input type="text" ng-model="signup.name" />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Телефон (формат +79781234567</label>
+                        <input type="text" name="phone" ng-model="signup.phone" md-maxlength="12" minlength="12" />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Город</label>
+                        <input type="text" ng-model="signup.city" />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Адрес(пример - ул.Ленина 63-48)</label>
+                        <input type="text" ng-model="signup.address" />
+                    </md-input-container>
+
+                    <md-button type="submit" class="md-raised md-accent" ng-click="signUp(signup)" ng-disabled="signupForm.$invalid">Зарегистрироваться</md-button>
+
+                </form>
+            </md-content>
+        </md-tab>
+</md-content>

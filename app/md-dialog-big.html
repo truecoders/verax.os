@@ -1,0 +1,13 @@
+<md-dialog md-theme="{{theme}}" flex="50">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span flex>{{title}}</span>
+            <div class="md-actions">
+                <md-button class="md-fab" ng-click="closeDialog(); disableBlur();"><i class="material-icons">close</i></md-button>
+            </div>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <p>{{content}}</p>
+    </md-dialog-content>
+</md-dialog>

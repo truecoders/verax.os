@@ -1,0 +1,10 @@
+<h2 class="md-title">Последние новости {{siteSettings.shortName['value']}}</h2>
+{{routeParams}}
+<p>
+    {{user | json}}{{$routeParams | json}}
+    <a href="/#!/admin/start" >admin</a>
+</p>
+<p>
+    locationAbsUrl:{{locationAbsUrl | json}}<br/>
+    locationUrl:{{locationUrl | json}}<br/>
+</p>

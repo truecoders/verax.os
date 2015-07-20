@@ -1,0 +1,69 @@
+<div layout="row" layout-fill ng-if="user.authenticated && user.role == 0" md-theme="{{$siteTheme}}" md-theme-watch ng-controller="adminMainCtrl" ng-class="blured ? 'vx-blur' : ''">
+
+
+
+    <!--левый сайдбар-->
+        <md-sidenav layout-fill layout="column" flex md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z4" md-component-id="left" >
+            <md-toolbar md-medium-tall class="md-warn md-whiteframe-z3">
+                <div class="md-toolbar-tools">
+                    <a href="" ng-click="go('/on/start')">
+                        {{$siteName}}
+                    </a>
+                </div>
+            </md-toolbar>
+            <div flex class="md-padding">
+                <ng-include autoscroll src="mainRouteContentPartial"></ng-include>
+            </div>
+            <md-button class="md-raised md-warn" ng-click="toggleRightSidebar()"><i class="material-icons">menu</i></md-button>
+        </md-sidenav>
+
+    <div flex layout="column">
+        <!--верхний тулбар-->
+        <md-toolbar md-medium-tall class="md-whiteframe-z2">
+            <div class="md-toolbar-tools">
+                <a href="" ng-click="go('/on/start')">
+                    {{$siteLongName}}
+                </a>
+                <span flex><md-button class="md-accent">Админка / {{breadCrumbs}}</md-button></span>
+                <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="material-icons">menu</i> {{user.authenticated ? user.email : 'Вход/Регистрация'}}</md-button>
+            </div>
+        </md-toolbar>
+
+
+        <!--правый сайдбар-->
+        <md-sidenav layout="column" flex class="md-sidenav-right md-whiteframe-z3" md-component-id="right">
+            <md-toolbar class="">
+                <span class="md-toolbar-tools">
+                    {{user.authenticated ? 'Личные данные' : 'Войти или зарегистрироваться'}}
+                    <span flex></span>
+                    <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="material-icons">close</i></md-button>
+                </span>
+                <ng-include src="user.authenticated ? 'app/auth/client-data.html' : 'app/auth/signup.html'"></ng-include>
+            </md-toolbar>
+        </md-sidenav>
+
+        <!--основной контент-->
+        <div layout="column" flex ng-controller="veraxRoutesController">
+            <md-tabs flex class="md-primary" md-selected="activeMainRouteId" md-dynamic-height="true" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
+                <md-tab flex layout="column" label="{{route.name}}" ng-repeat="(mainRouteKey, route) in veraxRoutes.admin" md-on-select="routeOnSelect(route, 0)">
+                    <md-tab-body layout-fill flex layout="column">
+
+                            <ng-include ng-if="!route.child" autoscroll src="route.partial"></ng-include>
+
+                            <md-tabs flex md-align-tabs="top" class="md-warn" ng-if="route.child" md-selected="activeChildRouteId" md-dynamic-height="true" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
+                                <md-tab label="{{r.name}}" ng-repeat="(k, r) in route.child" md-on-select="routeOnSelect(r, route)">
+                                    <md-tab-body>
+                                        <md-content>
+                                            <ng-include autoscroll src="r.partial"></ng-include>
+                                        </md-content>
+                                    </md-tab-body>
+                                </md-tab>
+                            </md-tabs>
+
+                    </md-tab-body>
+                </md-tab>
+
+            </md-tabs>
+        </div>
+    </div>
+</div>

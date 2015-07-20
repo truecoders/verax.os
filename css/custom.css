@@ -1,0 +1,112 @@
+html{
+
+}
+body{
+}
+/* ng-cloak */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng.ng-cloak {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/css/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(/css/MaterialIcons-Regular.woff2) format('woff2'),
+    url(/css/MaterialIcons-Regular.woff) format('woff'),
+    url(/css/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.forCategories{
+    /*background-color: #d9534f;*/
+    display: inline-table;
+    list-style: inside none none;
+    padding: 0 20px;
+    text-align: center;
+}
+#forCategories{
+    text-align: center;
+    width: 100%;
+}
+.forCategories a{
+    color: #d9534f;
+}
+/*#forCategories span a{*/
+    /*-moz-transform: rotate(-90deg);*/
+    /*-ms-transform: rotate(-90deg);*/
+    /*-o-transform: rotate(-90deg);*/
+    /*-webkit-transform: rotate(-90deg);*/
+/*}*/
+.activeHref{
+    color: #cd0a0a;
+}
+
+.hidedEdit{
+    display: none;
+}
+.shownEdit textarea{
+    height: 100%;
+    width: 100%;
+}
+
+.bolded{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.emptySell{
+    background-color: #fbc9fb !important;
+    border-color: #b5b5b5 !important;
+}
+
+.vx-blur{
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
+    height: 100%;
+}
+
+md-tabs-canvas {
+    height: 30px;
+}
+
+.md-tab {
+    line-height: 17px;
+    padding: 7px 24px;
+}
+md-tabs-content-wrapper {
+    top: 30px;
+}
