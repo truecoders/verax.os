@@ -45,7 +45,11 @@ app.controller('veraxRoutesController', function ($scope, $rootScope, $filter, D
             }
         },
         'products': {
-            id: 1, name: 'Товары', theme: 'brown'
+            id: 1, name: 'Магазин', theme: 'brown', child:{
+                popular:{id: 0, name: 'Популярные товары'},
+                all:{id: 1, name: 'Все товары'},
+                discount:{id: 2, name: 'Акции'}
+            }
         },
         'blog': {
             id: 2, name: 'Блог', theme: 'orange'

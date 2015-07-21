@@ -1,4 +1,4 @@
-<div layout="row" layout-fill md-theme="{{$siteTheme}}" md-theme-watch ng-controller="clientMainCtrl" ng-class="blured ? 'vx-blur' : ''">
+<div ng-cloak layout="row" layout-fill md-theme="{{$siteTheme}}" md-theme-watch ng-controller="clientMainCtrl" ng-class="blured ? 'vx-blur' : ''">
 
     <!--левый сайдбар-->
     <md-sidenav layout-fill layout="column" flex md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z4" md-component-id="left" >
@@ -24,8 +24,9 @@
                 <a href="" ng-click="go  ('/on/start')">
                     {{$siteLongName}}
                 </a>
-                <span flex><md-button class="md-accent" ng-click="go('/on/start')">Главная страница / {{breadCrumbs}}</md-button></span>
-                <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="material-icons">menu</i> {{user.authenticated ? user.email : 'Вход/Регистрация'}}</md-button>
+                <span flex><md-button class="md-accent" ng-click="go('/on/start')">{{breadCrumbs}}</md-button></span>
+                <i class="material-icons">{{user.authenticated ? 'person' : 'person_add'}} </i>
+                <a href="" class="md-title" ng-click="toggleRightSidebar()"> {{user.authenticated ? user.name || user.email : 'Войти'}}</a>
             </div>
         </md-toolbar>
 
@@ -48,18 +49,16 @@
                 <md-tab flex layout="column" label="{{route.name}}" ng-repeat="(mainRouteKey, route) in veraxRoutes.on" md-on-select="routeOnSelect(route, 0)">
                     <md-tab-body layout-fill flex layout="column">
 
-                        <ng-include ng-if="!route.child" autoscroll src="route.partial"></ng-include>
-
                         <md-tabs flex md-align-tabs="top" class="md-warn" ng-if="route.child" md-selected="activeChildRouteId" md-dynamic-height="true" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
                             <md-tab label="{{r.name}}" ng-repeat="(k, r) in route.child" md-on-select="routeOnSelect(r, route)">
                                 <md-tab-body>
                                     <md-content class="md-padding">
-                                        <ng-include autoscroll src="r.partial"></ng-include>
+                                        <ng-include src="r.partial"></ng-include>
                                     </md-content>
                                 </md-tab-body>
                             </md-tab>
                         </md-tabs>
-
+                        <ng-include src="route.partial"></ng-include>
                     </md-tab-body>
                 </md-tab>
 

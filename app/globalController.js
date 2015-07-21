@@ -11,7 +11,7 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
 
 
     $rootScope.go = function(url){
-        url != $location.url() ? $location.url(url) : showNoty('warning', 'Вы уже на этой странице');
+        url != $location.url() ? $location.url(url) : $scope.showNoty('warning', 'Вы уже на этой странице');
     };
 
     $scope.siteThemes = [
@@ -81,11 +81,11 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
         noty({
             type: type,
             theme: false,
-            template: '<md-card class="md-whiteframe-z3"><md-card-content>'+
-            '<md-button style="width: 100%" class="'+ toastClass +' md-button md-'+ $rootScope.$siteTheme +'-theme">'+ title +
-            '<md-button aria-label="noty" class="md-fab md-'+ $rootScope.$siteTheme +'-theme '+ toastClass +'"><i class="material-icons">'+ icon +'</i></md-button>' +
+            template: '<md-card class="md-whiteframe-z3" layout="column"><md-card-content>'+
+            '<md-button flex class="'+ toastClass +' md-button md-'+ $rootScope.$siteTheme +'-theme md-title">'+ title +
+            '<md-button flex aria-label="noty" class="md-fab md-'+ $rootScope.$siteTheme +'-theme '+ toastClass +'"><i class="material-icons">'+ icon +'</i></md-button>' +
             '</md-button>'+
-            '<h3 class="md-title '+ toastClass +'">'+ message +'</h3>'+
+            '<h3 flex class="md-title '+ toastClass +'">'+ message +'</h3>'+
             '</md-card-content></md-card>',
             speed: 200,
             timeout: hd

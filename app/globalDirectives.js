@@ -85,17 +85,16 @@ app.directive('vxEditable', function() {
             vxFn: '&updatefn',
             data: '='
         },
-        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true">{{data}}</span>'+
+        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true">{{data}}{{data ? "" : "ввести"}}</span>'+
     '<span ng-show="startEdit">'+
     '<form name="vxed">'+
-            '<input style="float:right; font-size: 0.8em;padding: 0;" ng-click="startEdit=false;" type="button" value="x"/>'+
-            '<input style="float:right; font-size: 0.8em;padding: 0;" ng-disabled="!vxed.ta.$dirty" class="" ng-click="vxFn();startEdit=false;" type="button" value="ok"/>'+
+            '<md-button style="float: right;" class="md-fab md-mini md-warn" ng-click="startEdit=false;"><i class="material-icons">close</i></md-button>'+
             '<textarea name="ta" style="width: 100%" ng-model="data" ng-blur="vxFn();startEdit=false;"></textarea>'+
-    '</form></span>',
+            '<md-button style="float: right;" class="md-fab md-mini" ng-disabled="!vxed.ta.$dirty" ng-click="vxFn();startEdit=false;"><i class="material-icons">edit</i></md-button>'+
+        '</form></span>',
         link: function(scope, element, attrs){
-            scope.data = scope.data || '!';
+            scope.data = scope.data;
             element.css({
-                padding: '0px 10px',
                 width: '100%'
             });
         }
