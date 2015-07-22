@@ -38,7 +38,11 @@ app.config(['$routeProvider', '$locationProvider',//рабочие роуты
 
 app.run(function ($rootScope, $route, $location, Data, $templateCache) {
 
-    angular.isDefined($rootScope.user) ? '' : $rootScope.user = {};
+    if(angular.isDefined($rootScope.user)){
+
+    }else{
+        $rootScope.user = {};
+    }
 
     $rootScope.$on("$routeChangeStart", function (event, next, current){ //проверяем сессию(авторизацию) пользователя
         var nextUrl = next.$$route.originalPath;
@@ -46,8 +50,13 @@ app.run(function ($rootScope, $route, $location, Data, $templateCache) {
             if(results.uid){
                 if(!$rootScope.user.authenticated){
                     Data.post('user-data', {'uid': results.uid}).then(function(result){
-                        $rootScope.user = result.data[0];
-                        $rootScope.user.authenticated = true;
+                        if(result.data[0].active) { //если пользователь active
+                            $rootScope.user = result.data[0];
+                            $rootScope.user.authenticated = true;
+                        }else{
+                            $rootScope.errorMessage = 'Ваша учетная запись не активна, к сожалению.';
+                            $rootScope.go('/error');
+                        }
                     });
                 }
             }else{
@@ -59,13 +68,18 @@ app.run(function ($rootScope, $route, $location, Data, $templateCache) {
     if(!angular.isDefined($rootScope.siteSettings)){ // достаем настройки сайта из БД на страте
         $rootScope.siteSettings = {};
         Data.get('site-settings').then(function(data){
-            angular.forEach(data.data, function(s, i){
+            angular.forEach(data.settings['data'], function(s, i){
                 this[s.setting_name] = s;
 
             }, $rootScope.siteSettings);
-            $rootScope.$siteName = $rootScope.siteSettings['shortName'].value;
-            $rootScope.$siteLongName = $rootScope.siteSettings['longName'].value;
+            //angular.forEach(data.customersRoles['data'], function(r, i){
+            //    this[r.role_key] = r;
+            //},$rootScope.$userRoles);
+            $rootScope.$userRoles = data.customersRoles['data'];
+            $rootScope.$siteName = $rootScope.siteSettings['siteName'].value;
+            $rootScope.$siteLongName = $rootScope.siteSettings['siteLongName'].value;
             $rootScope.$siteTheme = $rootScope.siteSettings['siteTheme'].value;
+            $rootScope.$siteDescription = $rootScope.siteSettings['siteDescription'].value;
         });
     }
 
@@ -77,7 +91,10 @@ app.config(function($mdThemingProvider){
 
     $mdThemingProvider.theme('brown')
         .primaryPalette('brown')
-        .accentPalette('grey');
+        .accentPalette('grey')
+        .warnPalette('deep-orange',{
+            'default': '800'
+        });
 
     $mdThemingProvider.theme('brown-dark')
         .primaryPalette('brown')
@@ -92,11 +109,18 @@ app.config(function($mdThemingProvider){
 
     $mdThemingProvider.theme('purple')
         .primaryPalette('deep-purple')
-        .accentPalette('purple');
+        .accentPalette('purple',{
+            'default': '100'
+        });
 
     $mdThemingProvider.theme('orange')
-        .primaryPalette('deep-orange')
-        .accentPalette('orange');
+        .primaryPalette('deep-orange',{
+            'default': '900'
+        })
+        .accentPalette('orange')
+        .warnPalette('purple',{
+            'default': '800'
+        });
 
     $mdThemingProvider.theme('teal')
         .primaryPalette('teal')
@@ -122,6 +146,8 @@ app.config(function($mdThemingProvider){
 
     $mdThemingProvider.theme('ello', 'default')
         .primaryPalette('yellow')
+        .accentPalette('orange')
+        .backgroundPalette('blue')
         .dark();
 
     $mdThemingProvider.alwaysWatchTheme(true);

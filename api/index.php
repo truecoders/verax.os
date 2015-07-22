@@ -23,6 +23,14 @@ delete(table name, where clause as array)
 // настройки сайта
 $app->get('/site-settings', function() {
     global $db;
+    $rows['settings'] = $db->select("site_settings",'*',array(),"ORDER BY id");
+    $rows['customersRoles'] = $db->select("customers_roles",'*',array(),"ORDER BY id");
+    echoResponse(200, $rows);
+
+});
+
+$app->get('/site-settings', function() {
+    global $db;
     $rows = $db->select("site_settings",'*',array(),"ORDER BY id");
     echoResponse(200, $rows);
 
@@ -32,7 +40,7 @@ $app->get('/site-settings', function() {
 $app->post('/user-data', function() use ($app){
     $data = json_decode($app->request->getBody());
     global $db;
-    $rows = $db->select("customers_auth", 'name,email,phone,address,city,created,role', $data);
+    $rows = $db->select("customers_auth", 'uid,name, email, phone, address, city, created, role, active', $data);
     echoResponse(200, $rows);
 });
 

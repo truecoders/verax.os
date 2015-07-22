@@ -1,22 +1,3 @@
-
-app.directive('formElement', function() {
-    return {
-        restrict: 'E',
-        transclude: true,
-        scope: {
-            label : "@",
-            model : "="
-        },
-        link: function(scope, element, attrs) {
-            scope.disabled = attrs.hasOwnProperty('disabled');
-            scope.required = attrs.hasOwnProperty('required');
-            scope.pattern = attrs.pattern || '.*';
-        },
-        template: '<div class="form-group"><label class="col-sm-3 control-label no-padding-right" >  {{label}}</label><div class="col-sm-7"><span class="block input-icon input-icon-right" ng-transclude></span></div></div>'
-      };
-        
-});
-
 app.directive('onlyNumbers', function() {
     return function(scope, element, attrs) {
         var keyCode = [8,9,13,37,39,46,48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,110,190];
@@ -85,17 +66,16 @@ app.directive('vxEditable', function() {
             vxFn: '&updatefn',
             data: '='
         },
-        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true">{{data}}</span>'+
+        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true">{{data}}{{data ? "" : "ввести"}}</span>'+
     '<span ng-show="startEdit">'+
     '<form name="vxed">'+
-            '<input style="float:right; font-size: 0.8em;padding: 0;" ng-click="startEdit=false;" type="button" value="x"/>'+
-            '<input style="float:right; font-size: 0.8em;padding: 0;" ng-disabled="!vxed.ta.$dirty" class="" ng-click="vxFn();startEdit=false;" type="button" value="ok"/>'+
+            '<md-button style="float: right;" class="md-fab md-mini md-warn" ng-click="startEdit=false;"><i class="material-icons">close</i></md-button>'+
             '<textarea name="ta" style="width: 100%" ng-model="data" ng-blur="vxFn();startEdit=false;"></textarea>'+
-    '</form></span>',
+            '<md-button style="float: right;" class="md-fab md-mini" ng-disabled="!vxed.ta.$dirty" ng-click="vxFn();startEdit=false;"><i class="material-icons">edit</i></md-button>'+
+        '</form></span>',
         link: function(scope, element, attrs){
-            scope.data = scope.data || '!';
+            scope.data = scope.data;
             element.css({
-                padding: '0px 10px',
                 width: '100%'
             });
         }

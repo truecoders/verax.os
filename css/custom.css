@@ -110,3 +110,12 @@ md-tabs-canvas {
 md-tabs-content-wrapper {
     top: 30px;
 }
+
+.error-message{
+    font-size: small;
+    color: red;
+}
+.success-message{
+    font-size: small;
+    color: green;
+}

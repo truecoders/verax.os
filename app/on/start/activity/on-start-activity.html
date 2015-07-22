@@ -1,7 +1,7 @@
 <h2 class="md-title">Последние новости {{siteSettings.shortName['value']}}</h2>
 {{routeParams}}
 <p>
-    {{user | json}}{{$routeParams | json}}
+    {{user | json}}{{$routeParams | json}}{{$userRoles | json}}
     <a href="/#!/admin/start" >admin</a>
 </p>
 <p>
