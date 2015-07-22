@@ -78,7 +78,6 @@ app.run(function ($rootScope, $route, $location, Data, $templateCache) {
             $rootScope.$userRoles = data.customersRoles['data'];
             $rootScope.$siteName = $rootScope.siteSettings['siteName'].value;
             $rootScope.$siteLongName = $rootScope.siteSettings['siteLongName'].value;
-            $rootScope.$siteTheme = $rootScope.siteSettings['siteTheme'].value;
             $rootScope.$siteDescription = $rootScope.siteSettings['siteDescription'].value;
         });
     }
