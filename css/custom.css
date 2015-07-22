@@ -119,3 +119,10 @@ md-tabs-content-wrapper {
     font-size: small;
     color: green;
 }
+
+#signUpPage md-input-container{
+    padding: 0 0;
+}
+#signUpPage md-divider{
+    margin: 10px 0;
+}

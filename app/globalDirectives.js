@@ -66,16 +66,17 @@ app.directive('vxEditable', function() {
             vxFn: '&updatefn',
             data: '='
         },
-        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true">{{data}}{{data ? "" : "ввести"}}</span>'+
+        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true;">{{data}}{{data ? "" : "ввести"}}</span>'+
     '<span ng-show="startEdit">'+
     '<form name="vxed">'+
             '<md-button style="float: right;" class="md-fab md-mini md-warn" ng-click="startEdit=false;"><i class="material-icons">close</i></md-button>'+
-            '<textarea name="ta" style="width: 100%" ng-model="data" ng-blur="vxFn();startEdit=false;"></textarea>'+
+            '<input type="text" name="ta" style="width: 100%" ng-model="data" ng-blur="vxFn();startEdit=false;" />'+
             '<md-button style="float: right;" class="md-fab md-mini" ng-disabled="!vxed.ta.$dirty" ng-click="vxFn();startEdit=false;"><i class="material-icons">edit</i></md-button>'+
         '</form></span>',
         link: function(scope, element, attrs){
             scope.data = scope.data;
             element.css({
+                padding: '0 6px',
                 width: '100%'
             });
         }

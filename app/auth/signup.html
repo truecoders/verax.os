@@ -1,30 +1,29 @@
 
-<md-content ng-controller="authCtrl" style="font-size: 0.8em;">
-    <md-tabs style="color: #626262;" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
+<md-content ng-controller="authCtrl" class="md-body-2" id="signUpPage">
+    <md-tabs md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
         <md-tab label="Вход">
-            <md-content class="md-padding">
+            <md-content layout="column" class="md-padding">
                 <form name="loginForm">
 
-                        <md-input-container>
-                            <label class="md-icon-float">Электронная почта</label>
+
+                        <md-input-container class="md-icon-float">
+                            <label>Электронная почта</label>
                             <md-icon><i class="material-icons">email</i></md-icon>
                             <input type="email" name="email" ng-model="login.email" type="email" md-sidenav-focus required/>
-                            <div class="error-message" ng-if="!!loginForm.email.$error.required">Введите свой email, пожалуйста</div>
-                            <div class="error-message" ng-if="!!loginForm.email.$error.email">Не похоже на email</div>
-                            <div class="success-message" ng-if="loginForm.email.$valid">Порядок!</div>
                         </md-input-container>
-
+                    <div class="error-message" ng-if="!!loginForm.email.$error.required">Введите свой email, пожалуйста</div>
+                    <div class="error-message" ng-if="!!loginForm.email.$error.email">Не похоже на email</div>
+                    <div class="success-message" ng-if="loginForm.email.$valid">Порядок!</div>
                     <md-divider></md-divider>
 
-                    <div class="error-message" ng-if="loginForm.password.$error.required">Введите пароль, пожалуйста</div>
-                    <div class="error-message" ng-if="loginForm.password.$error.minlength">Пароль, как минимум, 6 символов</div>
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">vpn_key</i>
-                        <md-input-container flex="90">
+
+                        <md-input-container class="md-icon-float">
                             <label>Пароль</label>
+                            <md-icon><i class="material-icons">vpn_key</i></md-icon>
                             <input type="password" name="password" ng-model="login.password" maxlength="20" minlength="6" required/>
                         </md-input-container>
-                    </div>
+                    <div class="error-message" ng-if="loginForm.password.$error.required">Введите пароль, пожалуйста</div>
+                    <div class="error-message" ng-if="loginForm.password.$error.minlength">Пароль, как минимум, 6 символов</div>
                     <md-divider></md-divider>
 
                     <md-button type="submit" class="md-raised md-accent" ng-click="doLogin(login)" ng-disabled="loginForm.$invalid">{{loginForm.$invalid ? 'Не все введено' : 'Добро пожаловать!'}}</md-button>
@@ -34,85 +33,77 @@
         </md-tab>
 
         <md-tab label="Регистрация">
-            <md-content class="md-padding">
+            <md-content layout="column" class="md-padding">
                 <form name="signupForm">
 
+
+                    <md-input-container class="md-icon-float">
+                        <label>Электронная почта</label>
+                        <md-icon><i class="material-icons">email</i></md-icon>
+                        <input type="email" name="email" ng-model="signup.email" type="email" required/>
+                    </md-input-container>
                     <div class="error-message" ng-if="!!signupForm.email.$error.required">Введите свой email, пожалуйста</div>
                     <div class="error-message" ng-if="!!signupForm.email.$error.email">Не похоже на email</div>
                     <div class="success-message" ng-if="signupForm.email.$valid">Порядок!</div>
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">email</i>
-                        <md-input-container flex="90">
-                            <label>Электронная почта</label>
-                            <input type="email" name="email" ng-model="signup.email" type="email" required />
-                        </md-input-container>
-                    </div>
                     <md-divider></md-divider>
 
-                    <div class="error-message" ng-if="signupForm.password.$error.required">Введите пароль, пожалуйста</div>
-                    <div class="error-message" ng-if="signupForm.password.$error.minlength">Пароль, как минимум, 6 символов</div>
-                    <div class="error-message" ng-if="signupForm.password.$error.maxlength">Пароль не длиннее 20 символов</div>
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">vpn_key</i>
-                        <md-input-container flex="90">
+
+                        <md-input-container class="md-icon-float">
                             <label>Пароль</label>
+                            <md-icon><i class="material-icons">vpn_key</i></md-icon>
                             <input type="password" name="password" ng-model="signup.password" maxlength="20" minlength="6" required />
                         </md-input-container>
-                    </div>
+                        <div class="error-message" ng-if="signupForm.password.$error.required">Введите пароль, пожалуйста</div>
+                        <div class="error-message" ng-if="signupForm.password.$error.minlength">Пароль, как минимум, 6 символов</div>
+                        <div class="error-message" ng-if="signupForm.password.$error.maxlength">Пароль не длиннее 20 символов</div>
                     <md-divider></md-divider>
 
+
+                        <md-input-container class="md-icon-float">
+                            <label>Повторите пароль</label>
+                            <md-icon><i class="material-icons">vpn_key</i></md-icon>
+                            <input type="password" name="password2" ng-model="signup.password2" maxlength="20" minlength="6" password-match="signup.password" required />
+                        </md-input-container>
                     <div class="error-message" ng-if="signupForm.password2.$error.required">Повторите пароль, пожалуйста</div>
                     <div class="error-message" ng-if="signupForm.password2.$error.passwordNoMatch">Пароли должны совпасть</div>
                     <div class="success-message" ng-if="!signupForm.password2.$error.passwordNoMatch && signup.password2">Пароли совпали</div>
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">vpn_key</i>
-                        <md-input-container flex="90">
-                            <label>Повторите пароль</label>
-                            <input type="password" name="password2" ng-model="signup.password2" maxlength="20" minlength="6" password-match="signup.password" required />
-                        </md-input-container>
-                    </div>
                     <md-divider></md-divider>
 
-                    <div class="error-message" ng-if="signupForm.phone.$error.required">Введите телефон, пожалуйста</div>
-                    <div class="error-message" ng-if="signupForm.phone.$error.minlength">Формат ввода <b>без +7</b></div>
-                    <div class="success-message" ng-if="signupForm.phone.$valid">Отлично!</div>
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">phone</i> +7
-                        <md-input-container flex="80">
+
+                        <md-input-container class="md-icon-float">
                             <label>Телефон (9781234567)</label>
+                            <md-icon><i class="material-icons">phone</i></md-icon>
                             <input type="text" name="phone" ng-model="signup.phone" only-numbers maxlength="10" minlength="10" required />
-
                         </md-input-container>
-                    </div>
+                    <div class="error-message" ng-if="signupForm.phone.$error.required">Введите телефон, пожалуйста</div>
+                    <div class="error-message" ng-if="signupForm.phone.$error.minlength"><b>Не вводите "+7" или "8" в начале</b></div>
+                    <div class="success-message" ng-if="signupForm.phone.$valid">Отлично!</div>
                     <md-divider></md-divider>
 
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">person_outline</i>
-                        <md-input-container flex="90">
+
+                        <md-input-container class="md-icon-float">
                             <label>ФИО</label>
+                            <md-icon><i class="material-icons">person_outline</i></md-icon>
                            <input type="text" ng-model="signup.name" />
                         </md-input-container>
-                    </div>
                     <md-divider></md-divider>
 
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">location_city</i>
-                        <md-input-container flex="90">
+
+                        <md-input-container class="md-icon-float">
                             <label>Город</label>
+                            <md-icon><i class="material-icons">location_city</i></md-icon>
                             <input type="text" ng-model="signup.city" />
                         </md-input-container>
-                    </div>
                     <md-divider></md-divider>
 
-                    <div layout="row" layout-align="start center">
-                        <i flex="10" class="material-icons">location_on</i>
-                        <md-input-container flex="90">
+
+                        <md-input-container class="md-icon-float">
                             <label>Адрес(ул.Ленина 63-48)</label>
+                            <md-icon><i class="material-icons">location_on</i></md-icon>
                             <input type="text" ng-model="signup.address" />
                         </md-input-container>
-                    </div>
 
-                    <md-button type="submit" class="md-raised md-accent" ng-click="signUp(signup)" ng-disabled="signupForm.$invalid">Зарегистрироваться</md-button>
+                    <md-button type="submit" class="md-raised md-accent" ng-click="signUp(signup)" ng-disabled="signupForm.$invalid || signupForm.password2.$error.passwordNoMatch">Зарегистрироваться</md-button>
 
                 </form>
             </md-content>

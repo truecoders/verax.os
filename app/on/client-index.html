@@ -39,8 +39,8 @@
                     <span flex></span>
                     <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="material-icons">close</i></md-button>
                 </span>
-                <ng-include src="user.authenticated ? 'app/auth/client-data.html' : 'app/auth/signup.html'"></ng-include>
             </md-toolbar>
+            <ng-include src="user.authenticated ? 'app/auth/client-data.html' : 'app/auth/signup.html'"></ng-include>
         </md-sidenav>
 
         <!--основной контент-->
