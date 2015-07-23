@@ -40,6 +40,7 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
 
             },
             clickOutsideToClose: false,
+            escapeToClose: false,
             controller: function dialogController($rootScope, $scope, $mdDialog){
                 $scope.closeDialog = function(){
                     $mdDialog.hide();

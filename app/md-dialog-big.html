@@ -3,11 +3,12 @@
         <div class="md-toolbar-tools">
             <span flex>{{title}}</span>
             <div class="md-actions">
-                <md-button class="md-fab" ng-click="closeDialog(); disableBlur();"><i class="material-icons">close</i></md-button>
+                <md-button class="md-success" ng-click="closeDialog(); disableBlur();"><i class="material-icons">close</i></md-button>
             </div>
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <p>{{content}}</p>
+        <div text-angular ng-model="content"></div>
+        <div><pre>{{content}}</pre></div>
     </md-dialog-content>
 </md-dialog>

@@ -6,13 +6,63 @@
     <meta charset="utf-8">
     <base href="/">
     <link rel="stylesheet" href="css/angular-material.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/textAngular.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
 </head>
 <body ng-cloak>
 
 
-  <div layout-fill layout="row" ng-view="" id="ng-view"></div>
+<div layout="row" style="height: 100%;" md-theme="{{$siteTheme}}" md-theme-watch ng-controller="globalCtrl">
 
+    <!--левый сайдбар-->
+    <md-sidenav layout-fill layout="column" flex md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z4" md-component-id="left" >
+        <md-toolbar md-medium-tall class="md-warn md-whiteframe-z3">
+            <div class="md-toolbar-tools">
+                <a href="" ng-click="go('/on/start')">
+                    {{$siteName}}
+                </a>
+            </div>
+        </md-toolbar>
+        <div flex class="md-padding">
+            <ng-include autoscroll src="mainRouteContentPartial"></ng-include>
+        </div>
+        <md-button class="md-raised md-warn" ng-click="toggleRightSidebar()"><i class="material-icons">menu</i></md-button>
+    </md-sidenav>
+
+
+    <div flex layout="column">
+
+        <!--верхний тулбар-->
+        <md-toolbar md-medium-tall class="md-whiteframe-z2">
+            <div class="md-toolbar-tools">
+                <a href="" ng-click="go  ('/on/start')">
+                    {{$siteLongName}}
+                </a>
+                <span flex><md-button class="md-accent" ng-click="go('/on/start')">{{breadCrumbs}}</md-button></span>
+                <i class="material-icons">{{user.authenticated ? 'person_outline' : 'person_add'}} </i>
+                <a href="" class="md-title" ng-click="toggleRightSidebar()"> {{user.authenticated ? user.name || user.email : 'Войти'}}</a>
+            </div>
+        </md-toolbar>
+
+
+        <!--правый сайдбар-->
+        <md-sidenav layout="column" flex class="md-sidenav-right md-whiteframe-z3" md-component-id="right">
+            <md-toolbar class="">
+                <span class="md-toolbar-tools">
+                    {{user.authenticated ? 'Личные данные' : 'Войти или зарегистрироваться'}}
+                    <span flex></span>
+                    <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="material-icons">close</i></md-button>
+                </span>
+            </md-toolbar>
+            <ng-include src="user.authenticated ? 'app/auth/client-data.html' : 'app/auth/signup.html'"></ng-include>
+        </md-sidenav>
+
+
+
+        <div flex layout="column" ng-view="" id="ng-view"></div>
+
+    </div>
+</div>
 
 <!-- Libraries -->
 <script src="js/jquery.min.js"></script>
@@ -21,6 +71,9 @@
 <script src="js/angular-animate.min.js"></script>
 <script src="js/angular-aria.min.js"></script>
 <script src="js/angular-material.min.js"></script>
+<script src="js/textAngular-rangy.min.js"></script>
+<script src="js/textAngular-sanitize.min.js"></script>
+<script src="js/textAngular.min.js"></script>
 <script src="js/toaster.js"></script>
 <script src="js/jquery.noty.packaged.js"></script>
 

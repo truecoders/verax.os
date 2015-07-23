@@ -1,6 +1,6 @@
 <md-content layout="column" ng-controller="logoutCtrl">
 
-    <md-list flex class="md-title">
+    <md-list flex class="md-subhead">
         <md-list-item>
             <i class="material-icons">info</i><span class="md-caption">Кликните дважды для изменения!</span>
         </md-list-item>
@@ -21,9 +21,11 @@
             <i title="Улица, дом-квартира" class="material-icons">location_on</i> <vx-editable title="Кликните дважды для редактирования" data="user.address" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'address': user.address})"></vx-editable>
         </md-list-item>
         <md-list-item>
-            <i title="Полномочия" class="material-icons">supervisor_account</i> {{$userRoles[user.role].role_description}}<md-divider></md-divider>
+            <i title="Полномочия" class="material-icons">supervisor_account</i> {{$userRoles[user.role].role_description}}
         </md-list-item>
     </md-list>
+    <md-divider></md-divider>
+    <span flex></span>
 
     <md-button class="md-raised md-warn" ng-click="logout()">Выход</md-button>
 </md-content>

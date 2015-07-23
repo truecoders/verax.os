@@ -1,4 +1,4 @@
-var app = angular.module('verax', ['ngRoute', 'ngAnimate', 'ngMaterial', 'toaster']);
+var app = angular.module('verax', ['ngRoute', 'ngAnimate', 'ngMaterial', 'textAngular', 'toaster']);
 
 app.config(['$routeProvider', '$locationProvider',//рабочие роуты
   function($routeProvider, $locationProvider) {

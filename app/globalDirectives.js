@@ -74,7 +74,7 @@ app.directive('vxEditable', function() {
             '<md-button style="float: right;" class="md-fab md-mini" ng-disabled="!vxed.ta.$dirty" ng-click="vxFn();startEdit=false;"><i class="material-icons">edit</i></md-button>'+
         '</form></span>',
         link: function(scope, element, attrs){
-            scope.data = scope.data;
+            //scope.data = scope.data;
             element.css({
                 padding: '0 6px',
                 width: '100%'

@@ -62,11 +62,11 @@
                         <md-input-container class="md-icon-float">
                             <label>Повторите пароль</label>
                             <md-icon><i class="material-icons">vpn_key</i></md-icon>
-                            <input type="password" name="password2" ng-model="signup.password2" maxlength="20" minlength="6" password-match="signup.password" required />
+                            <input ng-disabled="signupForm.password.$invalid" type="password" name="password2" ng-model="signup.password2" maxlength="20" minlength="6" password-match="signup.password" required />
                         </md-input-container>
                     <div class="error-message" ng-if="signupForm.password2.$error.required">Повторите пароль, пожалуйста</div>
                     <div class="error-message" ng-if="signupForm.password2.$error.passwordNoMatch">Пароли должны совпасть</div>
-                    <div class="success-message" ng-if="!signupForm.password2.$error.passwordNoMatch && signup.password2">Пароли совпали</div>
+                    <div class="success-message" ng-if="!signupForm.password2.$error.passwordNoMatch && signupForm.password2.$valid">Пароли совпали</div>
                     <md-divider></md-divider>
 
 
