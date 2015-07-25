@@ -9,22 +9,22 @@ app.config(['$routeProvider', '$locationProvider',//рабочие роуты
           .when('/admin/:mainRoute', {
                 title: 'Админка',
                 templateUrl: 'app/admin/admin-index.html',
-                controller: 'globalCtrl'
+                controller: ''
             })
           .when('/admin/:mainRoute/:childRoute', {
                 title: 'Админка',
                 templateUrl: 'app/admin/admin-index.html',
-                controller: 'globalCtrl'
+                controller: ''
             })
-          .when('/on/:mainRoute', {
+          .when('/:rootRoute/:mainRoute', {
                 title: 'Клиент',
                 templateUrl: 'app/on/client-index.html',
-                controller: 'globalCtrl'
+                controller: 'clientMainCtrl'
             })
-          .when('/on/:mainRoute/:childRoute', {
+          .when('/:rootRoute/:mainRoute/:childRoute', {
                 title: 'Клиент',
                 templateUrl: 'app/on/client-index.html',
-                controller: 'globalCtrl'
+                controller: 'clientMainCtrl'
             })
           .when('/error', {
                 title: 'Ошибка',
@@ -45,7 +45,7 @@ app.run(function ($rootScope, $route, $location, Data, $templateCache) {
     }
 
     $rootScope.$on("$routeChangeStart", function (event, next, current){ //проверяем сессию(авторизацию) пользователя
-        var nextUrl = next.$$route.originalPath;
+        //var nextUrl = next.$$route.originalPath;
         Data.get('session').then(function (results){
             if(results.uid){
                 if(!$rootScope.user.authenticated){

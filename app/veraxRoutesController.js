@@ -24,7 +24,10 @@ app.controller('veraxRoutesController', function ($scope, $rootScope, $filter, D
             }
         },
         blog: {
-            id: 2, name: 'Блог', theme: 'orange'
+            id: 2, name: 'Блог', theme: 'orange', child: {
+                all: {id: 0, name: 'Все записи'},
+                'new-post': {id: 1, name: 'Новая запись'}
+            }
         },
         forum: {
             id: 3, name: 'Форум', theme: 'purple'
@@ -123,8 +126,12 @@ app.controller('veraxRoutesController', function ($scope, $rootScope, $filter, D
                 }
             }
         }else{
-            $rootScope.showDialog('Ошибка!', 'Ошибка доступа: "currentRootRout: "'+ currentRootRout + ' | "currentMainRout: "' + currentMainRout + ' | "currentChildRout: "' + currentChildRout);
+            $rootScope.errorMessage = 'Ошибка доступа. Раздел сайта "'+ currentMainRout +'" неактивен, был удален или никогда не существовал';
+            $location.url('/error');
         }
+    }else{
+        $rootScope.errorMessage = 'Ошибка доступа. Раздел сайта "'+ currentRootRout +'" неактивен, был удален или никогда не существовал';
+        $location.url('/error');
     }
 
     // работа после выбора роута

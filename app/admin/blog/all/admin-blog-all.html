@@ -1,0 +1,22 @@
+<div ng-controller="adminBlogCtrl">
+    <h2 class="md-title">Все записи в блоге</h2>
+    <md-card ng-repeat="bp in blogPosts | orderBy: created">
+        <md-card-content layout="column">
+            <h2 class="md-display-1" style="text-align: center">{{bp.title}}</h2>
+            <div flex layout="row">
+                <md-card style="width: 220px; height: 270px;" class="md-margin md-whiteframe-z3">
+                    <md-card-content style="width: 220px; height: 270px;" layout="column">
+                        <span flex>Изображение</span>
+                        <span><i class="fa fa-user md-headline"></i>{{bp.user}}</span>
+                        <span><i class="fa fa-warning md-headline"></i>{{bp.created}}</span>
+                    </md-card-content>
+                </md-card>
+                    <md-card flex class="md-margin">
+                        <md-card-content>
+                            <vx-editable data="bp.text" edit="html" updatefn="vxUpdateData('blog_posts/id/' + bp.id, {'text': bp.text})"></vx-editable>
+                        </md-card-content>
+                    </md-card>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>

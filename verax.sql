@@ -1,9 +1,23 @@
--- Adminer 4.1.0 MySQL dump
+﻿-- Adminer 4.1.0 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP TABLE IF EXISTS `blog_posts`;
+CREATE TABLE `blog_posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `text` text NOT NULL,
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `blog_posts` (`id`, `user`, `category`, `title`, `text`, `created`) VALUES
+(1,	180,	0,	'Хеллоу ворлд',	'\"Verax.os\"- гибкий движок сайта, который имеет в своей основе супер-героический JavaScript фреймворк Angularjs, Angular Material и php-фреймворк Slim для обработки серверных запросов. Так же использует dbHelper написанный Swadesh Behera, который значительно облегчает обращение к базе данных. В-общем, акцент делался на удобство разработки и \"одностраничность\" приложения. Дизайн - всем знакомый Material Design от компании Google (как и Angularjs, кстати). Встроены несколько тем с вариациями встроенных в MD цветовых палитр. Написана простая система роутинга с неперезагружаемым контроллером при смене URL. Все служебные роуты хранятся в массиве в контроллере. Пользовательские роуты хранятся в БД. Так же написано много вкусных \"плюшек\" для, опять же, удобства разработки и удобства использования администратором и пользователем. Написана система аутентикации/регистрации пользователей. TO DO => 1) Простой интегрированный форум 2) простой интегрированный блог 3) интегрированный интернет-магазин 4) склад товаров 5) систему продаж в реальном магазине',	'2015-07-24 12:56:18');
 
 DROP TABLE IF EXISTS `customers_auth`;
 CREATE TABLE `customers_auth` (
@@ -30,12 +44,14 @@ INSERT INTO `customers_auth` (`uid`, `name`, `email`, `phone`, `password`, `addr
 (174,	'Tapaswini Sahoo',	'linky@gmail.com',	'5555555555',	'$2a$10$b2f3694f56fdb5b5c9ebeulMJTSx2Iv6ayQR0GUAcDsn0Jdn4c1we',	'ul. Filtrowa 68',	'Warszawa',	'2014-08-31 17:44:54',	'1',	'secret_key',	1),
 (175,	'Manas Ranjan Subudhi',	'manas@gmail.com',	'6666666666',	'$2a$10$03ab40438bbddb67d4f13Odrzs6Rwr92xKEYDbOO7IXO8YvBaOmlq',	'5677 Strong St.',	'Stavern\n',	'2014-08-31 17:45:08',	'1',	'secret_key',	1),
 (178,	'AngularCode Administrator',	'admin@angularcode.com',	'0000000000',	'$2a$10$72442f3d7ad44bcf1432cuAAZAURj9dtXhEMBQXMn9C8SpnZjmK1S',	'C/1052, Bangalore',	'',	'2014-08-31 18:00:26',	'1',	'secret_key',	1),
-(180,	'Якунин Евгений Викторович',	'mrjohn73rus@gmail.com',	'9788048353',	'$2a$10$5cdc279a1ad94744e7ce7e4P.WVTO6vG5dGhrf1f0CsfnjjjQCdki',	'Хрулева 24-22',	'Севастополь',	'2015-07-12 22:31:23',	'0',	'secret_key',	1),
+(180,	'Якунин Евгений Викторович',	'mrjohn73rus@gmail.com',	'9788048355',	'$2a$10$5cdc279a1ad94744e7ce7e4P.WVTO6vG5dGhrf1f0CsfnjjjQCdki',	'Хрулева 24-22',	'Севастополь',	'2015-07-12 22:31:23',	'0',	'secret_key',	1),
 (181,	'2121',	'john@web.ru',	'1212',	'$2a$10$6bc2ffc802139a322197aue4TEQgY2h7ITOvFtA3GwyzYaqF1uLYC',	'Хрулева 22',	'Севастополь',	'2015-07-12 22:43:29',	'1',	'secret_key',	1),
-(188,	'',	'irina-avdi@mail.ru',	'',	'$2a$10$dc66c3a342fbfe1aecac0ub8oKD9D0arQxtJnf0AEK5EMA4f6DH2W',	'',	NULL,	'2015-07-12 23:25:54',	'1',	'secret_key',	1),
+(188,	'Иришка',	'irina-avdi@mail.ru',	'9788050405',	'$2a$10$dc66c3a342fbfe1aecac0ub8oKD9D0arQxtJnf0AEK5EMA4f6DH2W',	'Макарова 16-45',	'Севастополь',	'2015-07-12 23:25:54',	'1',	'secret_key',	1),
 (189,	'',	'john@ru',	'',	'$2a$10$4f24fa496591b9aab76d5eih.mje3CXs65xj523Xktd3uORVXNb1C',	'',	NULL,	'2015-07-13 14:44:28',	'1',	'secret_key',	1),
 (190,	'',	'irina-avdi@mail.ru2',	'',	'$2a$10$4f2f7e5279367f7c1b55bOPeSgxXk4jLQAIF4cwPoi8vLXYkWxx2S',	'',	NULL,	'2015-07-15 09:08:56',	'1',	'secret_key',	1),
-(191,	'21',	'mrjohn73rus@gmail.com2',	'1221122121',	'$2a$10$1724b8ac01a736ab53a53uYw1NxEkzDvgyiMrEzhrxGwAZswDAAKK',	'qwqw qwqw',	'qwe',	'2015-07-15 09:54:51',	'1',	'secret_key',	1);
+(191,	'21',	'mrjohn73rus@gmail.com2',	'1221122121',	'$2a$10$1724b8ac01a736ab53a53uYw1NxEkzDvgyiMrEzhrxGwAZswDAAKK',	'qwqw qwqw',	'qwe',	'2015-07-15 09:54:51',	'1',	'secret_key',	1),
+(192,	'РОПВ',	'irina-avdi@mail.ru23',	'1111111111',	'$2a$10$66e8a6e5019504e68fdf2u91P6gXKtDL1a0vO4rVNCVI1Sq2Aso7W',	'в',	'3в',	'2015-07-22 16:58:41',	'1',	'secret_key',	1),
+(193,	'34',	'ftyjfty@er',	'1231231231',	'$2a$10$774cba6be914a7d8791e7uPKVKCqDrRAYqfGu0HBWeoYlsif7vUE6',	'',	NULL,	'2015-07-23 15:21:08',	'1',	'secret_key',	1);
 
 DROP TABLE IF EXISTS `customers_roles`;
 CREATE TABLE `customers_roles` (
@@ -59,5 +75,10 @@ CREATE TABLE `site_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `site_settings` (`id`, `setting_description`, `setting_name`, `value`) VALUES
+(1,	'Тема оформления сайта',	'siteTheme',	'teal'),
+(2,	'Слоган',	'siteLongName',	'\"In Verax Veritas\"'),
+(3,	'Название сайта',	'siteName',	'Verax'),
+(4,	'Описание сайта',	'siteDescription',	'\"Verax.os\"- гибкий движок сайта, который имеет в своей основе супер-героический JavaScript фреймворк Angularjs, Angular Material и php-фреймворк Slim для обработки серверных запросов. Так же использует dbHelper написанный Swadesh Behera, который значительно облегчает обращение к базе данных.\n\nВ-общем, акцент делался на удобство разработки и \"одностраничность\" приложения.\n\nДизайн - всем знакомый Material Design от компании Google (как и Angularjs, кстати). Встроены несколько тем с вариациями встроенных в MD цветовых палитр.\n\nНаписана простая система роутинга с неперезагружаемым контроллером при смене URL. Все служебные роуты хранятся в массиве в контроллере. Пользовательские роуты хранятся в БД. \n\nТак же написано много вкусных \"плюшек\" для, опять же, удобства разработки и удобства использования администратором и пользователем.\n\nНаписана система аутентикации/регистрации пользователей.\n\nTO DO => \n1) Простой интегрированный форум\n2) простой интегрированный блог\n3) интегрированный интернет-магазин\n4) склад товаров\n5) систему продаж в реальном магазине');
 
--- 2015-07-22 12:31:34
+-- 2015-07-24 12:58:20

@@ -60,25 +60,42 @@ app.directive('animateOnChange', function($animate) {
 });
 
 app.directive('vxEditable', function() {
+    //updatefn="vxUpdateData('site_settings/id/' + v.id, {'value': v.value})" // пример updatefn
     return {
-        restrict: 'E',
+        restrict: 'EA',
         scope: {
             vxFn: '&updatefn',
-            data: '='
+            vxdata: '=data',
+            dataType: '@edit'
         },
-        template: '<span ng-show="!startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true;">{{data}}{{data ? "" : "ввести"}}</span>'+
-    '<span ng-show="startEdit">'+
-    '<form name="vxed">'+
-            '<md-button style="float: right;" class="md-fab md-mini md-warn" ng-click="startEdit=false;"><i class="material-icons">close</i></md-button>'+
-            '<input type="text" name="ta" style="width: 100%" ng-model="data" ng-blur="vxFn();startEdit=false;" />'+
-            '<md-button style="float: right;" class="md-fab md-mini" ng-disabled="!vxed.ta.$dirty" ng-click="vxFn();startEdit=false;"><i class="material-icons">edit</i></md-button>'+
-        '</form></span>',
+        template: '<div ng-hide="startEdit" style="border-bottom: 1px dotted;cursor: pointer;" ng-dblclick="startEdit = true;" ng-bind-html="vxdata">{{vxdata ? "" : "ввести"}}</div>'+
+        '<span ng-show="startEdit">'+
+            '<md-button style="float: right;" class="md-fab md-mini md-warn" ng-click="startEdit=false;"><i class="fa fa-times"></i></md-button>'+
+            '<div ng-if="dataType == \'html\'" text-angular ng-model="vxdata"></div>{{vxdata}}'+
+            '<input ng-if="dataType != \'html\'" type="text" name="ta" style="width: 100%" ng-model="vxdata" ng-blur="vxFn();startEdit=false;" />'+
+            '<md-button style="float: right;" class="md-fab md-mini" ng-click="vxFn();startEdit=false;"><i class="fa fa-pencil-square-o"></i></md-button>'+
+        '</span>',
         link: function(scope, element, attrs){
-            //scope.data = scope.data;
             element.css({
                 padding: '0 6px',
                 width: '100%'
             });
+        }
+    };
+});
+
+app.directive('vxEdit', function(){
+    return {
+        restrict: 'EA',
+        scope:{
+            size: '@',
+            data: '=', // данные
+            target: '@', // строка вида 'tableName/searchId/id',
+
+
+        },
+        link: function(scope, element, attrs){
+
         }
     };
 });

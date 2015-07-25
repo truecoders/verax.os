@@ -4,14 +4,14 @@
         <div layout="column" flex ng-if="user.authenticated && user.role === 0" ng-controller="veraxRoutesController">
             <md-tabs flex class="md-primary" md-selected="activeMainRouteId" md-dynamic-height="false" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
                 <md-tab flex layout="column" label="{{route.name}}" ng-repeat="(mainRouteKey, route) in veraxRoutes.admin" md-on-select="routeOnSelect(route, 0)">
-                    <md-tab-body layout-fill flex layout="column">
+                    <md-tab-body>
 
                             <ng-include ng-if="!route.child" autoscroll src="route.partial"></ng-include>
 
                             <md-tabs flex md-align-tabs="top" class="md-warn" ng-if="route.child" md-selected="activeChildRouteId" md-dynamic-height="true" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
                                 <md-tab label="{{r.name}}" ng-repeat="(k, r) in route.child" md-on-select="routeOnSelect(r, route)">
                                     <md-tab-body>
-                                        <md-content>
+                                        <md-content class="md-padding">
                                             <ng-include autoscroll src="r.partial"></ng-include>
                                         </md-content>
                                     </md-tab-body>

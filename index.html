@@ -1,18 +1,19 @@
-<!DOCTYPE html lang="ru">
-<html ng-app="verax">
+<!DOCTYPE html>
+<html ng-app="verax" lang="ru">
 <head>
     <title></title>
     <meta name="Description" content="">
     <meta charset="utf-8">
     <base href="/">
-    <link rel="stylesheet" href="css/angular-material.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
     <link rel="stylesheet" href="css/textAngular.css" type="text/css" />
+    <link rel="stylesheet" href="css/angular-material.min.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
 </head>
 <body ng-cloak>
 
 
-<div layout="row" style="height: 100%;" md-theme="{{$siteTheme}}" md-theme-watch ng-controller="globalCtrl">
+<div id="root-content" layout="row" style="height: 100%;" md-theme="{{$siteTheme}}" md-theme-watch ng-controller="globalCtrl">
 
     <!--левый сайдбар-->
     <md-sidenav layout-fill layout="column" flex md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z4" md-component-id="left" >
@@ -26,6 +27,7 @@
         <div flex class="md-padding">
             <ng-include autoscroll src="mainRouteContentPartial"></ng-include>
         </div>
+        {{scroll}}
         <md-button class="md-raised md-warn" ng-click="toggleRightSidebar()"><i class="material-icons">menu</i></md-button>
     </md-sidenav>
 
@@ -39,6 +41,7 @@
                     {{$siteLongName}}
                 </a>
                 <span flex><md-button class="md-accent" ng-click="go('/on/start')">{{breadCrumbs}}</md-button></span>
+                <md-button ng-if="user.role === 0" class="md-title md-fab md-primary md-mini" ng-click="go('/admin/start')"><i class="material-icons">build</i></md-button>
                 <i class="material-icons">{{user.authenticated ? 'person_outline' : 'person_add'}} </i>
                 <a href="" class="md-title" ng-click="toggleRightSidebar()"> {{user.authenticated ? user.name || user.email : 'Войти'}}</a>
             </div>
@@ -85,7 +88,7 @@
 <script src="app/globalDirectives.js"></script>
 <script src="app/veraxRoutesController.js"></script>
 <script src="app/auth/authCtrl.js"></script>
-<script src="app/admin/adminMainCtrl.js"></script>
+<script src="app/admin/adminSectionControllers.js"></script>
 <script src="app/on/clientMainCtrl.js"></script>
 
 

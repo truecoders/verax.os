@@ -3,7 +3,7 @@
             <md-list-item layout="row" ng-repeat="v in siteSettings">
                 <span ng-dblClick="showDialog(v.setting_description, v.value)" flex="30">{{v.setting_description}}: </span>
 
-                    <vx-editable flex="70" data="v.value" updatefn="vxUpdateData('site_settings/id/' + v.id, {'value': v.value})"></vx-editable>
+                <div vx-editable flex="70" edit="html" data="v.value" updatefn="vxUpdateData('site_settings/id/' + v.id, {'value': v.value})"></div>
 
                 <md-divider ng-if="!$last"></md-divider>
             </md-list-item>

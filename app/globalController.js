@@ -4,7 +4,6 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
 
     $scope.locationAbsUrl = $location.absUrl();
     $scope.locationUrl = $location.url();
-    $scope.locationHost = $location.host();
     $scope.locationPath = $location.path();
     $scope.locationHash = $location.hash();
     $scope.blured = false;
@@ -33,9 +32,10 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
 
     $rootScope.showDialog = function(title, content){
         var body = angular.element(document.body);
+        var rc = angular.element('#root-content');
         $mdDialog.show({
             parent: body,
-            templateUrl: 'app/md-dialog-big.html',
+            templateUrl: 'app/md-dialog.html',
             onComplete: function(){
 
             },
@@ -43,15 +43,13 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
             escapeToClose: false,
             controller: function dialogController($rootScope, $scope, $mdDialog){
                 $scope.closeDialog = function(){
+                    rc.removeClass('vx-blur');
                     $mdDialog.hide();
                 };
                 $scope.title = title;
                 $scope.content = content;
                 $scope.theme = $rootScope.$siteTheme;
-                angular.element('#ng-view').addClass('vx-blur');
-                $scope.disableBlur = function(){
-                    angular.element('#ng-view').removeClass('vx-blur');
-                };
+                rc.addClass('vx-blur');
             }
         });
     };
@@ -92,6 +90,12 @@ app.controller('globalCtrl', function ($scope, $rootScope, $filter, Data, $route
             timeout: hd
         });
     };
+
+    $scope.scroll = '';
+    angular.element(window).on('scroll', function() {
+        $scope.scroll = window.pageYOffset || document.documentElement.scrollTop;
+    });
+
 
     //$scope.setSiteTheme = function(theme){
     //    $mdThemingProvider.setDefaultTheme(theme);

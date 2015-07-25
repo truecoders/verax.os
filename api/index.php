@@ -29,13 +29,23 @@ $app->get('/site-settings', function() {
 
 });
 
-$app->get('/site-settings', function() {
+//$app->get('/site-settings', function() {
+//    global $db;
+//    $rows = $db->select("site_settings",'*',array(),"ORDER BY id");
+//    echoResponse(200, $rows);
+//
+//});
+
+
+$app->post('/select', function() use ($app){
+    $data = json_decode($app->request->getBody());
+    $table = $data->table;
+    $searchQueryArray = isset($data->search) ? $data->search : array();
+    $rows = isset($data->rows) ? $data->rows : '*';
     global $db;
-    $rows = $db->select("site_settings",'*',array(),"ORDER BY id");
+    $rows = $db->select($table, $rows, $searchQueryArray);
     echoResponse(200, $rows);
-
 });
-
 
 $app->post('/user-data', function() use ($app){
     $data = json_decode($app->request->getBody());
