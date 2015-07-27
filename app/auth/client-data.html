@@ -2,26 +2,26 @@
 
     <md-list flex class="md-subhead">
         <md-list-item>
-            <i class="material-icons">info</i><span class="md-caption">Кликните дважды для изменения!</span>
+            <i class="fa fa-info"></i><span class="md-caption">Кликните дважды для изменения!</span>
         </md-list-item>
         <md-divider></md-divider>
         <md-list-item>
-            <i title="Фамилия Имя Отчество" class="material-icons">person</i> <vx-editable title="Кликните дважды для редактирования" data="user.name" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'name': user.name})"></vx-editable>
+            <i title="Фамилия Имя Отчество" class="fa fa-person"></i> <vx-editable title="Кликните дважды для редактирования" data="user.name" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'name': user.name})"></vx-editable>
         </md-list-item>
         <md-list-item>
-            <i title="Электронная почта" class="material-icons">email</i> <vx-editable title="Кликните дважды для редактирования" data="user.email" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'email': user.email})"></vx-editable>
+            <i title="Электронная почта" class="fa fa-envelope-o"></i> <vx-editable title="Кликните дважды для редактирования" data="user.email" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'email': user.email})"></vx-editable>
         </md-list-item>
         <md-list-item>
-            <i title="Телефон" class="material-icons">phone</i> +7<vx-editable title="Кликните дважды для редактирования" data="user.phone" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'phone': user.phone})"></vx-editable>
+            <i title="Телефон" class="fa fa-phone"></i> +7<vx-editable title="Кликните дважды для редактирования" data="user.phone" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'phone': user.phone})"></vx-editable>
         </md-list-item>
         <md-list-item>
-            <i title="Город" class="material-icons">location_city</i><vx-editable title="Кликните дважды для редактирования" data="user.city" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'city': user.city})"></vx-editable>
+            <i title="Город" class="fa fa-globe"></i><vx-editable title="Кликните дважды для редактирования" data="user.city" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'city': user.city})"></vx-editable>
         </md-list-item>
         <md-list-item>
-            <i title="Улица, дом-квартира" class="material-icons">location_on</i> <vx-editable title="Кликните дважды для редактирования" data="user.address" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'address': user.address})"></vx-editable>
+            <i title="Улица, дом-квартира" class="fa fa-map-marker"></i> <vx-editable title="Кликните дважды для редактирования" data="user.address" updatefn="vxUpdateData('customers_auth/uid/' + user.uid, {'address': user.address})"></vx-editable>
         </md-list-item>
         <md-list-item>
-            <i title="Полномочия" class="material-icons">supervisor_account</i> {{$userRoles[user.role].role_description}}
+            <i title="Полномочия" class="fa fa-lock"></i> {{$userRoles[user.role].role_description}}
         </md-list-item>
     </md-list>
     <md-divider></md-divider>

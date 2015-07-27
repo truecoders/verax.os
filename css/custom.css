@@ -130,3 +130,10 @@ md-tabs-content-wrapper {
 #signUpPage md-divider{
     margin: 10px 0;
 }
+
+.edit-button{
+    float: right;
+}
+.fa{
+    padding: 0 4px;
+}

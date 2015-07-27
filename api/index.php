@@ -29,21 +29,24 @@ $app->get('/site-settings', function() {
 
 });
 
-//$app->get('/site-settings', function() {
-//    global $db;
-//    $rows = $db->select("site_settings",'*',array(),"ORDER BY id");
-//    echoResponse(200, $rows);
-//
-//});
 
-
-$app->post('/select', function() use ($app){
+$app->post('/vx-select', function() use ($app){
     $data = json_decode($app->request->getBody());
     $table = $data->table;
     $searchQueryArray = isset($data->search) ? $data->search : array();
     $rows = isset($data->rows) ? $data->rows : '*';
     global $db;
     $rows = $db->select($table, $rows, $searchQueryArray);
+    echoResponse(200, $rows);
+});
+
+$app->post('/vx-post', function() use ($app){
+    $data = json_decode($app->request->getBody());
+    $table = $data->table;
+    $postData = array($data->row => $data->data);
+    $condition = array($data->searchId => $data->id);
+    global $db;
+    $rows = $db->update($table, $postData, $condition, array());
     echoResponse(200, $rows);
 });
 

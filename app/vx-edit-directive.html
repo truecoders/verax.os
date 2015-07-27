@@ -1,0 +1,23 @@
+
+<div title="Двойной клик для редактирования">
+    <div ng-hide="edit" layout="row">
+        <div flex ng-bind-html="data" ng-dblClick="et()"></div>
+        <a title="Редактировать" href="" ng-click="et()"><i aria-label="edit" class="fa fa-pencil-square-o md-body-1"></i></a>
+    </div>
+    <div ng-show="edit">
+        <div ng-show="html" layout="row">
+            <div flex text-angular ng-model="data"></div>
+            <div layout="column">
+                <md-button title="Закрыть" flex class="md-warn" ng-click="et()"><i aria-label="close" class="fa fa-times md-title"></i></md-button>
+                <md-button title="Отредактировать" flex class="md-success" ng-click="updateData()"><i aria-label="close" class="fa fa-check md-title"></i></md-button>
+            </div>
+        </div>
+        <form name="vxe">
+        <div ng-hide="html" class="md-actions" layout="row">
+            <input name="ci" flex type="text" ng-model="data" />
+            <md-button ng-disabled="!vxe.ci.$dirty" title="Отредактировать" class="md-fab md-mini md-success" ng-click="updateData()"><i aria-label="edit" class="fa fa-check"></i></md-button>
+            <md-button title="Закрыть" class="md-fab md-mini md-warn" ng-click="et()"><i aria-label="close" class="fa fa-times"></i></md-button>
+        </div>
+        </form>
+    </div>
+</div>

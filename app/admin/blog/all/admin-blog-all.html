@@ -1,8 +1,8 @@
 <div ng-controller="adminBlogCtrl">
     <h2 class="md-title">Все записи в блоге</h2>
-    <md-card ng-repeat="bp in blogPosts | orderBy: created">
+    <md-card ng-repeat="bp in blogPosts | orderBy: id">
         <md-card-content layout="column">
-            <h2 class="md-display-1" style="text-align: center">{{bp.title}}</h2>
+            <div class="md-display-1" style="text-align: center" vx-edit data="bp.title" target="['blog_posts','id',bp.id,'title']"></div>
             <div flex layout="row">
                 <md-card style="width: 220px; height: 270px;" class="md-margin md-whiteframe-z3">
                     <md-card-content style="width: 220px; height: 270px;" layout="column">
@@ -13,7 +13,7 @@
                 </md-card>
                     <md-card flex class="md-margin">
                         <md-card-content>
-                            <vx-editable data="bp.text" edit="html" updatefn="vxUpdateData('blog_posts/id/' + bp.id, {'text': bp.text})"></vx-editable>
+                            <div vx-edit data="bp.text" html="true" target="['blog_posts','id',bp.id,'text']"></div>
                         </md-card-content>
                     </md-card>
             </div>

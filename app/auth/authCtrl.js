@@ -2,6 +2,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.login = {};
     $scope.signup = {};
     $rootScope.user = {};
+
     $scope.doLogin = function (customer) {
         Data.post('login', {
             customer: customer
@@ -33,7 +34,6 @@ app.controller('logoutCtrl', function ($scope,$rootScope ,$location, Data, $rout
         $rootScope.user.authenticated = false;
         Data.get('logout').then(function (results) {
             $scope.showNoty(results.status, results.message);
-            $location.path('/', true);
         });
     };
 });

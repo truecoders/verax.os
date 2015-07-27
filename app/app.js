@@ -117,8 +117,8 @@ app.config(function($mdThemingProvider){
             'default': '900'
         })
         .accentPalette('orange')
-        .warnPalette('purple',{
-            'default': '800'
+        .warnPalette('red',{
+            'default': '500'
         });
 
     $mdThemingProvider.theme('teal')

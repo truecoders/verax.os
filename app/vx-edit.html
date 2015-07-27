@@ -1,0 +1,15 @@
+<md-dialog style="max-height: {{html ? '90%' : ''}}" md-theme="{{theme}}" flex="{{html ? '90' : '50'}}">
+    <md-toolbar ng-if="title">
+        <div class="md-toolbar-tools">
+            <span flex>{{title}}</span>
+            <md-button class="md-success" ng-click="closeDialog(); disableBlur();"><i class="fa fa-times-circle md-headline"></i></md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content ng-show="html">
+        <div layout="row" layout-fill text-angular ng-model="content"></div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <input name="contentInput" ng-show="!html" flex type="text" ng-model="content" />
+        <md-button class="md-warn md-raised edit-button" ng-click="updateData()"><i class="fa fa-pencil-square-o md-body-1">Обновить</i></md-button>
+    </div>
+</md-dialog>

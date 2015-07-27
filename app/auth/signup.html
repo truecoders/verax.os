@@ -8,7 +8,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Электронная почта</label>
-                            <md-icon><i class="material-icons">email</i></md-icon>
+                            <md-icon><i class="fa fa-envelope-o"></i></md-icon>
                             <input type="email" name="email" ng-model="login.email" type="email" md-sidenav-focus required/>
                         </md-input-container>
                     <div class="error-message" ng-if="!!loginForm.email.$error.required">Введите свой email, пожалуйста</div>
@@ -19,7 +19,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Пароль</label>
-                            <md-icon><i class="material-icons">vpn_key</i></md-icon>
+                            <md-icon><i class="fa fa-key"></i></md-icon>
                             <input type="password" name="password" ng-model="login.password" maxlength="20" minlength="6" required/>
                         </md-input-container>
                     <div class="error-message" ng-if="loginForm.password.$error.required">Введите пароль, пожалуйста</div>
@@ -39,7 +39,7 @@
 
                     <md-input-container class="md-icon-float">
                         <label>Электронная почта</label>
-                        <md-icon><i class="material-icons">email</i></md-icon>
+                        <md-icon><i class="fa fa-envelope-o"></i></md-icon>
                         <input type="email" name="email" ng-model="signup.email" type="email" required/>
                     </md-input-container>
                     <div class="error-message" ng-if="!!signupForm.email.$error.required">Введите свой email, пожалуйста</div>
@@ -50,7 +50,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Пароль</label>
-                            <md-icon><i class="material-icons">vpn_key</i></md-icon>
+                            <md-icon><i class="fa fa-key"></i></md-icon>
                             <input type="password" name="password" ng-model="signup.password" maxlength="20" minlength="6" required />
                         </md-input-container>
                         <div class="error-message" ng-if="signupForm.password.$error.required">Введите пароль, пожалуйста</div>
@@ -61,7 +61,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Повторите пароль</label>
-                            <md-icon><i class="material-icons">vpn_key</i></md-icon>
+                            <md-icon><i class="fa fa-key"></i></md-icon>
                             <input ng-disabled="signupForm.password.$invalid" type="password" name="password2" ng-model="signup.password2" maxlength="20" minlength="6" password-match="signup.password" required />
                         </md-input-container>
                     <div class="error-message" ng-if="signupForm.password2.$error.required">Повторите пароль, пожалуйста</div>
@@ -72,7 +72,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Телефон (9781234567)</label>
-                            <md-icon><i class="material-icons">phone</i></md-icon>
+                            <md-icon><i class="fa fa-phone"></i></md-icon>
                             <input type="text" name="phone" ng-model="signup.phone" only-numbers maxlength="10" minlength="10" required />
                         </md-input-container>
                     <div class="error-message" ng-if="signupForm.phone.$error.required">Введите телефон, пожалуйста</div>
@@ -83,7 +83,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>ФИО</label>
-                            <md-icon><i class="material-icons">person_outline</i></md-icon>
+                            <md-icon><i class="fa fa-user"></i></md-icon>
                            <input type="text" ng-model="signup.name" />
                         </md-input-container>
                     <md-divider></md-divider>
@@ -91,7 +91,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Город</label>
-                            <md-icon><i class="material-icons">location_city</i></md-icon>
+                            <md-icon><i class="fa fa-globe"></i></md-icon>
                             <input type="text" ng-model="signup.city" />
                         </md-input-container>
                     <md-divider></md-divider>
@@ -99,7 +99,7 @@
 
                         <md-input-container class="md-icon-float">
                             <label>Адрес(ул.Ленина 63-48)</label>
-                            <md-icon><i class="material-icons">location_on</i></md-icon>
+                            <md-icon><i class="fa fa-map-marker"></i></md-icon>
                             <input type="text" ng-model="signup.address" />
                         </md-input-container>
 

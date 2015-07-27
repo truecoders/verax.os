@@ -27,8 +27,8 @@
         <div flex class="md-padding">
             <ng-include autoscroll src="mainRouteContentPartial"></ng-include>
         </div>
-        {{scroll}}
-        <md-button class="md-raised md-warn" ng-click="toggleRightSidebar()"><i class="material-icons">menu</i></md-button>
+
+        <md-button class="md-raised md-warn" ng-click="toggleRightSidebar()"><i class="fa fa-bars"></i></md-button>
     </md-sidenav>
 
 
@@ -41,9 +41,8 @@
                     {{$siteLongName}}
                 </a>
                 <span flex><md-button class="md-accent" ng-click="go('/on/start')">{{breadCrumbs}}</md-button></span>
-                <md-button ng-if="user.role === 0" class="md-title md-fab md-primary md-mini" ng-click="go('/admin/start')"><i class="material-icons">build</i></md-button>
-                <i class="material-icons">{{user.authenticated ? 'person_outline' : 'person_add'}} </i>
-                <a href="" class="md-title" ng-click="toggleRightSidebar()"> {{user.authenticated ? user.name || user.email : 'Войти'}}</a>
+                <md-button ng-if="user.role === 0" class="md-title md-success" ng-click="go('/admin/start')"><i class="fa fa-wrench md-title"></i></md-button>
+                <a href="" class="md-title" ng-click="toggleRightSidebar()"><i class="fa {{user.authenticated ? 'fa-user' : 'fa-user-plus'}} md-title"> </i> {{user.authenticated ? user.name || user.email : 'Войти'}}</a>
             </div>
         </md-toolbar>
 
@@ -54,13 +53,11 @@
                 <span class="md-toolbar-tools">
                     {{user.authenticated ? 'Личные данные' : 'Войти или зарегистрироваться'}}
                     <span flex></span>
-                    <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="material-icons">close</i></md-button>
+                    <md-button class="md-accent" ng-click="toggleRightSidebar()"><i class="fa fa-times md-title"></i></md-button>
                 </span>
             </md-toolbar>
             <ng-include src="user.authenticated ? 'app/auth/client-data.html' : 'app/auth/signup.html'"></ng-include>
         </md-sidenav>
-
-
 
         <div flex layout="column" ng-view="" id="ng-view"></div>
 

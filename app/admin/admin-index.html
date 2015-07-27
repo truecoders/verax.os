@@ -11,7 +11,7 @@
                             <md-tabs flex md-align-tabs="top" class="md-warn" ng-if="route.child" md-selected="activeChildRouteId" md-dynamic-height="true" md-center-tabs="true" md-swipe-content="true" md-stretch-tabs="always">
                                 <md-tab label="{{r.name}}" ng-repeat="(k, r) in route.child" md-on-select="routeOnSelect(r, route)">
                                     <md-tab-body>
-                                        <md-content class="md-padding">
+                                        <md-content id="childRoute" class="md-padding">
                                             <ng-include autoscroll src="r.partial"></ng-include>
                                         </md-content>
                                     </md-tab-body>

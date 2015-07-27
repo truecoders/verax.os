@@ -13,7 +13,7 @@ app.controller('adminBlogCtrl', function ($rootScope, $scope, $location, $filter
 
     $scope.blogPosts = {};
 
-    Data.post('select', {table: 'blog_posts'}).then(function(result){
+    Data.post('vx-select', {table: 'blog_posts'}).then(function(result){
         angular.forEach(result.data, function(post, i){
             this[post.id] = post;
         }, $scope.blogPosts);
